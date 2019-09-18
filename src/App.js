@@ -1,14 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Summary from './pages/Summary.js';
+import React from 'react'
+import styles from './App.module.css'
+import Summary from './pages/Summary.js'
 
 function App() {
-  return (
-      <div className="App">
-        <Summary/>
-      </div>
-      );
+    return (
+        <div className={styles.root}>
+            <Summary />
+        </div>
+    )
 }
 
-export default App;
+export default App
