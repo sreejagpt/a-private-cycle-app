@@ -23,5 +23,6 @@
     font-size: 1em;
     padding: 1em;
     font-weight: 500;
+    border-width: 0;
     border-radius: 1em;
 }
