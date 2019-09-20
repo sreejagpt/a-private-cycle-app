@@ -1,51 +1,51 @@
 {
-    "name": "a-private-cycle-app",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "aws-sdk": "^2.531.0",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0",
-        "react-scripts": "3.1.1"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "prettier-all": "prettier --write **/*.{js,css,json,md}",
-        "pre-commit": "lint-staged && CI=true yarn test --no-watchman --colors"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@testing-library/react": "^9.1.4",
-        "husky": ">=1",
-        "lint-staged": ">=8",
-        "prettier": "1.18.2"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn run pre-commit"
-        }
-    },
-    "lint-staged": {
-        "*.{js,css,json,md}": [
-            "prettier --write",
-            "git add"
-        ]
+  "name": "a-private-cycle-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.531.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier-all": "prettier --write **/**/*.{js,css,json,md}",
+    "pre-commit": "lint-staged && CI=true yarn test --no-watchman --colors"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.1.4",
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "prettier": "1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run pre-commit"
     }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
