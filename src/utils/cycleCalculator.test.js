@@ -1,3 +1,5 @@
+import { format, subDays } from 'date-fns'
+
 import { getLatestDateFileName, getObject } from './s3.js'
 jest.mock('./s3.js')
 import { getPeriodStartsIn } from './cycleCalculator.js'
@@ -14,6 +16,8 @@ describe('Cycle Calculator', () => {
     getLatestDateFileName.mockImplementation(() =>
       Promise.resolve('latest-file-name')
     )
+
+    getObject.mockImplementation(() => Promise.resolve({}))
   })
 
   it('should get the latest file name in correct directory and then fetch its contents', async () => {
@@ -27,14 +31,20 @@ describe('Cycle Calculator', () => {
     expect(getObject).toHaveBeenCalledWith(cycleDataFileName)
   })
 
-  xit('should calculate next period by adding cycle days to most recent start date and subtracting from today', async () => {
+  it('should calculate next period by adding cycle days to most recent start date and subtracting from today', async () => {
+    const todayDate = new Date(2019, 1, 1)
+    const today = format(todayDate, 'yyyy-MM-dd')
+    const fiveDaysAgo = format(subDays(todayDate, 5), 'yyyy-MM-dd')
+    const cycleLengthDays = 28
+
     getObject.mockImplementation(name => {
       const contents =
         name === cycleDataFileName
-          ? { cycleLengthDays: 28 }
-          : { startDate: new Date() }
-      Promise.resolve(contents)
+          ? { cycleLengthDays: cycleLengthDays }
+          : { startDate: fiveDaysAgo }
+      return Promise.resolve(contents)
     })
-    const days = await getPeriodStartsIn()
+    const days = await getPeriodStartsIn(todayDate)
+    expect(days).toEqual(cycleLengthDays - 5)
   })
 })
