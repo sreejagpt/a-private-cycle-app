@@ -15,3 +15,22 @@ export const getPeriodStartsIn = async todayDate => {
   const nextPeriodStartDate = addDays(latestStartDate, cycleTime)
   return differenceInDays(nextPeriodStartDate, todayDate)
 }
+
+export const onPeriodNow = async () => {
+  const latestDateFileName = await getLatestDateFileName()
+  const latestDateObject = await getObject(latestDateFileName)
+
+  if (!latestDateObject) {
+    return false
+  }
+
+  if (latestDateObject.startDate && latestDateObject.endDate) {
+    return false
+  }
+
+  if (latestDateObject.startDate && !latestDateObject.endDate) {
+    return true
+  }
+
+  return false
+}
