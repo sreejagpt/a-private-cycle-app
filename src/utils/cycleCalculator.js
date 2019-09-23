@@ -1,4 +1,4 @@
-import { format, addDays, differenceInDays, parseISO } from 'date-fns'
+import { addDays, differenceInDays, parseISO } from 'date-fns'
 import { getObject, getLatestDateFileName } from './s3.js'
 
 export const getPeriodStartsIn = async todayDate => {
