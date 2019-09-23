@@ -17,12 +17,3 @@
   border: 0.25em #c1a4ae solid;
   border-radius: 50%;
 }
-
-.button {
-  background-color: #c1a4ae;
-  font-size: 1em;
-  padding: 1em;
-  font-weight: 500;
-  border-width: 0;
-  border-radius: 1em;
-}

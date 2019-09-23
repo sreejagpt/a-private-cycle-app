@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Summary.module.css'
 import { getPeriodStartsIn } from '../utils/cycleCalculator.js'
+import Button from '../components/Button.js'
 
 const Summary = () => {
   const [days, setDays] = useState(0)
@@ -16,7 +17,7 @@ const Summary = () => {
   return (
     <div className={styles.root}>
       <h1 className={styles.circle}>Period starts in {days} days</h1>
-      <button className={styles.button}>Started?</button>
+      <Button />
     </div>
   )
 }
