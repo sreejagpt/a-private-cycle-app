@@ -7,7 +7,7 @@ const Summary = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const days = await getPeriodStartsIn()
+      const days = await getPeriodStartsIn(new Date())
       setDays(days)
     }
     fetchData()

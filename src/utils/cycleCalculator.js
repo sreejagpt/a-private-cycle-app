@@ -7,8 +7,10 @@ export const getPeriodStartsIn = async todayDate => {
   const latestDateFileName = await getLatestDateFileName()
   const latestDateObject = await getObject(latestDateFileName)
 
-  const latestStartDate = parseISO(latestDateObject.startDate) || null
-  const cycleTime = cycleData.cycleLengthDays || null
+  const latestStartDate = latestDateObject
+    ? parseISO(latestDateObject.startDate)
+    : null
+  const cycleTime = cycleData ? cycleData.cycleLengthDays : null
 
   const nextPeriodStartDate = addDays(latestStartDate, cycleTime)
   return differenceInDays(nextPeriodStartDate, todayDate)

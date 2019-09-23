@@ -5,14 +5,17 @@ const {
   REACT_APP_BUCKET,
   REACT_APP_DATE_DIRECTORY,
   REACT_APP_COGNITO_AWS_REGION,
+  REACT_APP_AWS_REGION,
 } = process.env
 
 AWS.config.region = REACT_APP_COGNITO_AWS_REGION
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId: REACT_APP_COGNITO_IDENTITY_POOL_ID,
 })
+
 const s3 = new AWS.S3({
   apiVersion: '2006-03-01',
+  region: REACT_APP_AWS_REGION,
   params: { Bucket: REACT_APP_BUCKET },
 })
 
@@ -40,8 +43,8 @@ export const getLatestDateFileName = prefix => {
     .listObjects(bucketParams)
     .promise()
     .then(response => {
-      const objectList = JSON.parse(response.Body.toString())['Contents']
-      return `${REACT_APP_DATE_DIRECTORY}/${objectList.length - 1}.json`
+      const objectList = response.Contents
+      return `${REACT_APP_DATE_DIRECTORY}/${objectList.length - 2}.json`
     })
     .catch(err => {
       console.log(err, err.stack)
