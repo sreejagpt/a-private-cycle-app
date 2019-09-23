@@ -11,5 +11,5 @@ export const getPeriodStartsIn = async todayDate => {
   const cycleTime = cycleData.cycleLengthDays || null
 
   const nextPeriodStartDate = addDays(latestStartDate, cycleTime)
-  return Math.abs(differenceInDays(todayDate, nextPeriodStartDate))
+  return differenceInDays(nextPeriodStartDate, todayDate)
 }
