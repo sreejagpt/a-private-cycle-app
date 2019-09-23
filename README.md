@@ -29,7 +29,11 @@ REACT_APP_AWS_REGION
 # Coming soon
 
 ⏹ Reminders
+
 ⏹ Authorization
+
 ⏹ Multi user support
+
 ⏹ Non-S3 persistence
+
 ⏹ Better UI
