@@ -3,15 +3,21 @@ import styles from './Summary.module.css'
 import { getPeriodStartsIn, onPeriodNow } from '../utils/cycleCalculator.js'
 import Button from '../components/Button.js'
 
+const fetchCycleData = async () => {
+  const isPeriodNow = await onPeriodNow()
+  const days = await getPeriodStartsIn()
+
+  return [isPeriodNow, days]
+}
+
 const Summary = () => {
   const [days, setDays] = useState(0)
   const [isOnPeriodNow, setIsOnPeriodNow] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-      const isPeriodNow = await onPeriodNow()
+      const [isPeriodNow, days] = await fetchCycleData()
       setIsOnPeriodNow(isPeriodNow)
-      const days = await getPeriodStartsIn()
       setDays(days)
     }
     fetchData()
