@@ -28,6 +28,8 @@ REACT_APP_AWS_REGION
 
 # Coming soon
 
+⏹ Tracking cycle end
+
 ⏹ Reminders
 
 ⏹ Authorization
