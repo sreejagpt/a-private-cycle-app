@@ -22,15 +22,15 @@ const Summary = () => {
     }
     fetchData()
   }, [])
-
+  const summaryText = isOnPeriodNow
+    ? 'Period day X'
+    : `Period starts in ${days} days`
   return (
     <div className={styles.root}>
-      {isOnPeriodNow ? (
-        'Period day X'
-      ) : (
-        <h1 className={styles.circle}>Period starts in {days} days</h1>
-      )}
-      <Button onPeriodNow={isOnPeriodNow} />
+      <h1 className={styles.circle}>{summaryText}</h1>
+      <div onClick={() => setIsOnPeriodNow(!isOnPeriodNow)}>
+        <Button onPeriodNow={isOnPeriodNow} />
+      </div>
     </div>
   )
 }

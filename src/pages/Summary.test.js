@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import Summary from './Summary.js'
 import { getPeriodStartsIn, onPeriodNow } from '../utils/cycleCalculator.js'
 jest.mock('../utils/cycleCalculator.js')
@@ -55,5 +55,26 @@ test('When currently on period, summary indicates how many days on period user i
 
   const expectedSummaryText = 'Period day X'
   const element = await findByText(expectedSummaryText)
+  expect(element).toBeTruthy()
+})
+
+test("When button is clicked, it toggled from 'Started'? to 'Ended'?", async () => {
+  onPeriodNow.mockImplementationOnce(() => Promise.resolve(false))
+
+  const { findByText } = render(<Summary />)
+
+  let expectedSummaryText = 'Period starts in 0 days'
+  let summaryElement = await findByText(expectedSummaryText)
+  expect(summaryElement).toBeTruthy()
+
+  let element = await findByText('Started?')
+
+  fireEvent.click(element)
+
+  expectedSummaryText = 'Period day X'
+  summaryElement = await findByText(expectedSummaryText)
+  expect(summaryElement).toBeTruthy()
+
+  element = await findByText('Ended?')
   expect(element).toBeTruthy()
 })
