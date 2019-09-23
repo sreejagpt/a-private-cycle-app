@@ -4,8 +4,8 @@ A progressive web app that tracks what I want, how I want, without Facebook know
 
 # Using
 
-* React (yeah, I know)
-* Jest ( ... )
+* React *(yeah, I know)*
+* Jest *( ... )*
 * react-testing-library
 * AWS
 * Netlify
