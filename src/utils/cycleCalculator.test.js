@@ -1,11 +1,17 @@
 import { format, subDays } from 'date-fns'
-
+import mockDate from 'mockdate'
 import { getLatestDateFileName, getObject } from './s3.js'
 jest.mock('./s3.js')
 import { getPeriodStartsIn, onPeriodNow } from './cycleCalculator.js'
 
+const todayDate = new Date(2016, 29, 2)
 beforeEach(() => {
+  mockDate.set(todayDate)
+})
+
+afterEach(() => {
   jest.clearAllMocks()
+  mockDate.reset()
 })
 
 describe('Cycle Calculator', () => {
@@ -33,7 +39,6 @@ describe('Cycle Calculator', () => {
     })
 
     it('should calculate next period by adding cycle days to most recent start date and subtracting from today', async () => {
-      const todayDate = new Date(2019, 1, 1)
       const today = format(todayDate, 'yyyy-MM-dd')
       const fiveDaysAgo = format(subDays(todayDate, 5), 'yyyy-MM-dd')
       const cycleLengthDays = 28
