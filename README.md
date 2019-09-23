@@ -1,4 +1,4 @@
-# A Private Cycle 🚲
+# A Private Cycle 🚲🔐
 
 A progressive web app that tracks what I want, how I want, without Facebook knowing about it. 😇
 
